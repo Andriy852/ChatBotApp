@@ -8,4 +8,4 @@ Requests==2.32.3
 streamlit==1.43.2
 typing_extensions==4.13.0
 pysqlite3-binary==3.35.0
-langchain_pinecone
+langchain-pinecone==0.2.3
