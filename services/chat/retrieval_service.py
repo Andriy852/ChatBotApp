@@ -4,7 +4,7 @@ from langchain_core.documents import Document
 from langchain.chat_models import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langgraph.graph import StateGraph, END
-from langchain_chroma import Chroma
+from langchain_pinecone import PineconeVectorStore
 
 class RetrievalState(TypedDict):
     """
@@ -37,7 +37,7 @@ class RetrievalService:
         vector_store: The vector store to use for document retrieval
         user_id: The ID of the user whose documents should be retrieved
     """
-    def __init__(self, model: ChatOpenAI, vector_store: Chroma, user_id: str) -> None:
+    def __init__(self, model: ChatOpenAI, vector_store: PineconeVectorStore, user_id: str) -> None:
         """
         Initializes the RetrievalService with the given components.
         
