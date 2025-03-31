@@ -1,6 +1,5 @@
 firebase_admin==6.7.0
 langchain==0.3.21
-langchain_chroma==0.2.2
 langchain_core==0.3.49
 langchain_openai==0.3.11
 langgraph==0.3.21

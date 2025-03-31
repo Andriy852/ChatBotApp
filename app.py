@@ -9,7 +9,7 @@ from services.chat.memory_service import MemoryService
 from services.chat.retrieval_service import RetrievalService
 from ui.chat_ui import ChatUI
 from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
+from langchain_pinecone import PineconeVectorStore
 from config import constants
 
 # Initialize services
@@ -20,13 +20,11 @@ db = firestore.client()
 auth_service = AuthService(db)
 auth_ui = AuthUI(auth_service)
 
-# Initialize vector store
-embeddings = OpenAIEmbeddings(model=constants.EMBEDDING_MODEL)
-vector_store = Chroma(
-    collection_name=constants.COLLECTION_NAME,
-    embedding_function=embeddings,
-    persist_directory=constants.PERSIST_DIRECTORY
+embeddings = OpenAIEmbeddings(
+    model=constants.EMBEDDING_MODEL,
+    dimensions=1024  
 )
+vector_store = PineconeVectorStore(index_name=constants.COLLECTION_NAME, embedding=embeddings)
 
 if not st.session_state.get('logged_in'):
     action = auth_ui.show_auth_selector()
