@@ -1,0 +1,5 @@
+__pycache__/
+.DS_Store
+.streamlit/
+memory/
+chat-app-14f85-firebase-adminsdk-fbsvc-9023336a14.json
