@@ -47,7 +47,7 @@ class RetrievalService:
             user_id: The ID of the user whose documents should be retrieved
         """
         self.retriever = vector_store.as_retriever(
-                    search_kwargs={"k": 100, "filter": {"user_id": user_id}})
+                    search_kwargs={"k": 1000, "filter": {"user_id": user_id}})
         self.llm = model
         self._initialize_workflow()
 
