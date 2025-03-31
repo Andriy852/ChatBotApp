@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a conversational AI chatbot application built with Streamlit for the frontend, LangChain for AI capabilities, Firebase for user data storage, and ChromaDB for vector-based long-term memory. The chatbot maintains conversation history and can recall relevant facts from previous interactions to provide context-aware responses.
+This project is a conversational AI chatbot application built with Streamlit for the frontend, LangChain for AI capabilities, Firebase for user data storage, and Pinecone for vector-based long-term memory. The chatbot maintains conversation history and can recall relevant facts from previous interactions to provide context-aware responses.
 
 ## Features
 * Interactive Chat Interface: User-friendly web interface built with Streamlit.
@@ -11,7 +11,7 @@ This project is a conversational AI chatbot application built with Streamlit for
 * Conversation Memory: Stores and retrieves past conversations for each user using Firebase.
 * Long-term Context: 
     - Fact Extraction: LLM extracts user key facts from a conversation.
-    - ChromaDB Vector Store: Maintains relevant facts about the user in vector store for tailored responses.
+    - Pinecone Vector Store: Maintains relevant facts about the user in vector store for tailored responses.
 * Authentication
     - Secure Login: Email/password via Firebase REST API
     - User Management:
@@ -24,7 +24,7 @@ This project is a conversational AI chatbot application built with Streamlit for
 * AI model: gpt-4o-mini
 * Database:
     * Firebase Firestore (user data and conversations)
-    * ChromaDB (vector store for long-term memory)
+    * Firebase (vector store for long-term memory)
 * Authentication: Firebase Authentication
 
 ## Screenshots
@@ -55,12 +55,13 @@ To run the app locally, follow these steps:
     ```
 5. Set up Firebase:
     * Create a Firebase project at Firebase Console
-    * Download your service account JSON file and save it in the project root
+    * Download your service account JSON file, paste its contents as FIREBASE_CREDENTIALS into .streamlit/secrets.toml file
     * Enable Firestore Database and Authentication in your Firebase console
 6. Set up environment variables
     ```sh
     OPENAI_API_KEY=your-api-key
     FIREBASE_PROJECT_ID=your_firebase_project_id
+    PINECONE_API_KEY=your_api-key
     ```
 7. Run the Streamlit app:
     ```sh
