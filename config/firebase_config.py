@@ -19,7 +19,8 @@ def initialize_firebase():
     """
     if not firebase_admin._apps:
         try:
-            cred = credentials.Certificate("chat-app-14f85-firebase-adminsdk-fbsvc-9023336a14.json")
+            firebase_config = {k: str(v) for k,v in st.secrets["FIREBASE_CREDENTIALS"].items()}
+            cred = credentials.Certificate(firebase_config)
             firebase_admin.initialize_app(cred)
             return True
         except Exception as e:
